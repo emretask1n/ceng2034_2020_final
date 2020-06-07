@@ -1,0 +1,79 @@
+\usepackage{tgheros}
+\documentclass[onecolumn]{article}
+%\usepackage{url}
+%\usepackage{algorithmic}
+\usepackage[a4paper]{geometry}
+\usepackage{datetime}
+\usepackage[margin=2em, font=small,labelfont=it]{caption}
+\usepackage{graphicx}
+\usepackage{mathpazo} % use palatino
+\usepackage[scaled]{helvet} % helvetica
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{subfigure}
+% Letterspacing macros
+\newcommand{\spacecaps}[1]{\textls[200]{\MakeUppercase{#1}}}
+\newcommand{\spacesc}[1]{\textls[50]{\textsc{\MakeLowercase{#1}}}}
+
+\title{\spacecaps{Assignment Report 1: Process and Thread Implementation}\\ \normalsize \spacesc{CENG2034, Operating Systems} }
+\author{Emre Taşkın\\emretaskin2@posta.mu.edu.tr\\github:emretask1n}
+%\date{\today\\\currenttime}
+\date{\today}
+\begin{document}
+\fontfamily{qhv}\selectfont
+\maketitle
+
+\begin{abstract}
+In this lab, I saw How child process works and How can I download the URLs with Child process. I also learned what is orphan process. I used different python libraries and techniques.
+\end{abstract}
+
+
+\section{Introduction}
+This labs purpose was learning how a child process works and what is the relation between child process and parent process. Using different libraries by using multiprocessing in python. 
+
+\section{Assignments}
+I used a virtual machine to do my assignments which has 4GB RAM and 2 cores.This is why I used Pool(2) while doing multiprocessing in Assignment 2.4.
+
+\subsection{Assignment 1 Creating Child process}
+
+I created a child process with syscall and printed its PID.
+
+\includegraphics{OS1.jpg}
+
+\subsection{Assignment 2 Downloading files with the child process}
+
+In this assignment I created a child process which is downloads the given URLs
+This is the code for download URLs.
+
+\includegraphics{os2.jpg}
+
+
+
+\subsection{Assignment 3 How we can avoid from the orphan process situation?}
+An Orphan process is a running process whose parent process has finished or terminated.In the first picture child process is finished after parent process, this is called Orphan process. To avoid this situation we should use os.wait() as shown in second picture.
+
+\includegraphics[width=1.\textwidth]{os3.jpg}
+
+\includegraphics[width=1.\textwidth]{os4.jpg}
+
+\subsection{Assignment 4 Control duplicate files within the downloaded files of my python code}
+
+In this assignment I used multi processing technique and hashlib library of python. My function is hashing the files and output the results. We can see the duplication from the results. In my output I saw the same hash codes and colored them.
+
+\includegraphics[width=1.\textwidth]{os5.jpg}
+
+
+
+\section{Results}
+
+Fork system call use for creates a new process, which is called child process, which runs concurrently with process (which process called system call fork) and this process is called parent process. If parent process does not wait the child process this situation causes the orphan process. To avoid from the orphan process we can use os.wait(). Hashlib library implements a common interface to many different secure hash and message digest algorithms. It was really efficient to control duplicate files.
+
+
+\section{Conclusion}
+In conclusion, we can create child process with fork system call. While using child process we should check the child processes and parent processes times because if parent process takes shorter time than child this means there is orphan process situation in your code. We should fix it.Im happy to learn hashlib library, it was really fast and good way to check duplicates by using multiprocessing with hashlib. This lab improved my virtual machine skills and also I feel more confident about how operating systems works.
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
+
